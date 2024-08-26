@@ -1,0 +1,8 @@
+const a = [
+    0,1,2
+];
+const b = {
+    "map": true
+};
+print(a);
+print(b);
