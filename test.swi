@@ -1,8 +1,8 @@
-const a = [
-    0,1,2
-];
-const b = {
-    "map": true
-};
+const a = 12;
+const b = 10;
+const d = [$a,$b];
+const c = [$d];
 print(a);
 print(b);
+print(c);
+print(d);

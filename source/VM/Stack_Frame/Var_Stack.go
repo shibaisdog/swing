@@ -33,7 +33,7 @@ func (h *Var_Stack) Info(name string) (Heap.Type, interface{}, string) {
 }
 
 func (m Var_Stack) Info_Print(name string) {
-	typ, value, name := m.Info(name)
+	typ, value, _ := m.Info(name)
 	if typ.LIST {
 		m.List_Print(name)
 		return
@@ -42,27 +42,27 @@ func (m Var_Stack) Info_Print(name string) {
 		return
 	}
 	//fmt.Printf("type: %s value: %v name: %s\n", typ.GET_Name(), value, name)
-	fmt.Printf("%s [%s]: %v\n", name, typ.GET_Name(), value)
+	fmt.Printf("%v\n", value)
 }
 
 func (m Var_Stack) Map_Print(name string) {
-	typ, value, name := m.Info(name)
+	_, value, _ := m.Info(name)
 	jsonData, err := json.Marshal(Heap.ConvertToStringMap(value.(map[interface{}]interface{})))
 	if err != nil {
 		fmt.Printf("Error marshaling map to JSON: %v\n", err)
 		return
 	}
 	//fmt.Printf("type: %s value: %v name: %s\n", typ.GET_Name(), string(jsonData), name)
-	fmt.Printf("%s [%s]: %v\n", name, typ.GET_Name(), string(jsonData))
+	fmt.Printf("%v\n", string(jsonData))
 }
 
 func (m Var_Stack) List_Print(name string) {
-	typ, value, name := m.Info(name)
+	_, value, _ := m.Info(name)
 	jsonData, err := json.Marshal(value)
 	if err != nil {
 		fmt.Printf("Error marshaling list to JSON: %v\n", err)
 		return
 	}
 	//fmt.Printf("type: %s value: %v name: %s\n", typ.GET_Name(), string(jsonData), name)
-	fmt.Printf("%s [%s]: %v\n", name, typ.GET_Name(), string(jsonData))
+	fmt.Printf("%v\n", string(jsonData))
 }
